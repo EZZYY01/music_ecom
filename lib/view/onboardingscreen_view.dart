@@ -33,15 +33,6 @@ class _OnboardingscreenViewState extends State<OnboardingscreenView> {
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: Image.asset('assets/images/logo.png'),
                   ),
-                  Text(
-                    'SoundSage',
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontSize: size.width * 0.12,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blueGrey[900],
-                    ),
-                  ),
                   SizedBox(height: size.height * 0.02),
                   Text(
                     'version : 1.0.0',
