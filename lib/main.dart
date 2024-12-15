@@ -9,8 +9,8 @@ void main() {
       home: const OnboardingscreenView(),
       debugShowCheckedModeBanner: false,
       routes: {
-        '/login': (context) => const LoginView(),
-        "/signup": (context) => const SignupView(),
-        "/dashboard": (context) => const DashboardView(),
+        '/login': (context) => const LoginView(), //login
+        "/signup": (context) => const SignupView(), //signup
+        "/dashboard": (context) => const DashboardView(), //dashboard
       }));
 }
