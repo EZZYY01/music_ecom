@@ -62,7 +62,7 @@ class SignupView extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 20),
-              // Username Field
+              // Username field
               TextField(
                 decoration: InputDecoration(
                   labelText: "Username",
@@ -73,7 +73,7 @@ class SignupView extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              // Email Field
+              // Email field
               TextField(
                 decoration: InputDecoration(
                   labelText: "E-Mail",
