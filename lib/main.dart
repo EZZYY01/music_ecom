@@ -6,7 +6,7 @@ import 'package:music_ecom/view/signup_view.dart';
 
 void main() {
   runApp(MaterialApp(
-      home: const OnboardingscreenView(),
+      home: const OnboardingScreenView(),
       debugShowCheckedModeBanner: false,
       routes: {
         '/login': (context) => const LoginView(), //login
