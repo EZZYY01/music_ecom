@@ -176,7 +176,7 @@ class LoginView extends StatelessWidget {
                     ),
                     child: IconButton(
                       onPressed: () {},
-                      icon: Image.asset('assets/images/fb.png'),
+                      icon: Image.asset('assets/images/google.png'),
                       iconSize: 24, // Reduced icon size for better layout
                     ),
                   ),

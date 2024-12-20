@@ -59,7 +59,7 @@ class _OnboardingScreenViewState extends State<OnboardingScreenView> {
             description: 'Find your perfect instrument, play and learn',
           ),
           _buildPage(
-            image: 'assets/images/drum.png',
+            image: 'assets/images/covdrum.jpg',
             title: 'Listen Anywhere',
             description: 'Stream music anytime, anywhere without limits.',
           ),

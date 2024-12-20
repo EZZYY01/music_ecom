@@ -109,11 +109,19 @@ class SignupView extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               // Privacy Policy Agreement
-              Row(
+              Wrap(
+                alignment: WrapAlignment.start,
+                crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  Checkbox(
-                    value: true,
-                    onChanged: (value) {},
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 0.0), // Adjust padding as needed
+                    child: Checkbox(
+                      value: true,
+                      onChanged: (value) {},
+                      visualDensity: VisualDensity.compact,
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
                   ),
                   const Text("I agree to "),
                   GestureDetector(
@@ -133,6 +141,7 @@ class SignupView extends StatelessWidget {
                   ),
                 ],
               ),
+
               const SizedBox(height: 20),
               // Create Account Button
               SizedBox(
@@ -181,7 +190,7 @@ class SignupView extends StatelessWidget {
                     ),
                     child: IconButton(
                       onPressed: () {},
-                      icon: Image.asset('assets/images/fb.png'),
+                      icon: Image.asset('assets/images/google.png'),
                       iconSize: 24,
                     ),
                   ),

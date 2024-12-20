@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 ThemeData getApplicationTheme() {
   return ThemeData(
     appBarTheme: const AppBarTheme(
-        color: Colors.white,
+        centerTitle: true,
+        color: Colors.red,
         elevation: 4,
         shadowColor: Colors.black,
         titleTextStyle: TextStyle(
@@ -13,17 +14,20 @@ ThemeData getApplicationTheme() {
         )),
     primarySwatch: Colors.orange,
     scaffoldBackgroundColor: Colors.grey[200],
-    fontFamily: 'Montserrat Bold',
+    fontFamily:
+        'Montserrat Bold', // Use 'Montserrat' instead of 'Montserrat Bold'
+
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         textStyle: const TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
-          color: Colors.white,
+          color: Colors.white, // Correct color reference
         ),
         backgroundColor: Colors.orange,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5),
+          // Correct shape syntax
+          borderRadius: BorderRadius.circular(5), // Rounded corners
         ),
       ),
     ),
