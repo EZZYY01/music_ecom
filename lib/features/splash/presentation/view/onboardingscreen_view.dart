@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:music_ecom/view/login_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:music_ecom/app/di/di.dart';
+import 'package:music_ecom/features/auth/presentation/view/login_view.dart';
+import 'package:music_ecom/features/auth/presentation/view_model/login/login_bloc.dart';
 
 class OnboardingScreenView extends StatefulWidget {
   const OnboardingScreenView({super.key});
@@ -17,9 +20,13 @@ class _OnboardingScreenViewState extends State<OnboardingScreenView> {
   }
 
   void _navigateToLogin() {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const LoginView()),
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => BlocProvider.value(
+          value: getIt<LoginBloc>(),
+          child: LoginView(),
+        ),
+      ),
     );
   }
 
