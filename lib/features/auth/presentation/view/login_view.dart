@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart'; // Ensure Bloc is imported
 import 'package:music_ecom/features/auth/presentation/view/register_view.dart';
 import 'package:music_ecom/features/auth/presentation/view_model/login/login_bloc.dart';
-import 'package:music_ecom/features/home/presentation/view/home_screen.dart';
 // import 'package:music_ecom/view/dashboard_view.dart';
 
 class LoginView extends StatelessWidget {
@@ -128,13 +127,15 @@ class LoginView extends StatelessWidget {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        // Skipping login check and directly navigating to another screen
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  HomeScreen()), // Replace with your destination screen
-                        );
+                        if (_formKey.currentState!.validate()) {
+                          context.read<LoginBloc>().add(
+                                LogincustomerEvent(
+                                  context: context,
+                                  username: _usernameController.text,
+                                  password: _passwordController.text,
+                                ),
+                              );
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 16),

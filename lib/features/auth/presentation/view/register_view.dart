@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:music_ecom/features/auth/presentation/view_model/signup/register_bloc.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -20,50 +21,31 @@ class _RegisterViewState extends State<RegisterView> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  File? _img;
+  Future<void> checkCameraPermission() async {
+    if (await Permission.camera.request().isRestricted ||
+        await Permission.camera.request().isDenied) {
+      await Permission.camera.request();
+    }
+  }
 
-  Future<void> _browseImage(ImageSource source) async {
+  File? _img;
+  Future _browseImage(ImageSource imageSource) async {
     try {
-      final image = await ImagePicker().pickImage(source: source);
+      final image = await ImagePicker().pickImage(source: imageSource);
       if (image != null) {
         setState(() {
           _img = File(image.path);
-          context.read<RegisterBloc>().add(UploadImage(file: _img!));
+          // Send image to server
+          context.read<RegisterBloc>().add(
+                UploadImage(file: _img!),
+              );
         });
+      } else {
+        return;
       }
     } catch (e) {
       debugPrint(e.toString());
     }
-  }
-
-  void _showImagePicker() {
-    showModalBottomSheet(
-      context: context,
-      builder: (context) {
-        return SafeArea(
-          child: Wrap(
-            children: [
-              ListTile(
-                leading: const Icon(Icons.camera),
-                title: const Text("Take a Photo"),
-                onTap: () {
-                  Navigator.pop(context);
-                  _browseImage(ImageSource.camera);
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.image),
-                title: const Text("Choose from Gallery"),
-                onTap: () {
-                  Navigator.pop(context);
-                  _browseImage(ImageSource.gallery);
-                },
-              ),
-            ],
-          ),
-        );
-      },
-    );
   }
 
   @override
@@ -75,7 +57,9 @@ class _RegisterViewState extends State<RegisterView> {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
       ),
       body: SafeArea(
@@ -84,22 +68,70 @@ class _RegisterViewState extends State<RegisterView> {
           child: Form(
             key: _key,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(height: 10),
-                Center(
-                  child: GestureDetector(
-                    onTap: _showImagePicker,
-                    child: CircleAvatar(
-                      radius: 60,
-                      backgroundImage: _img != null
-                          ? FileImage(_img!)
-                          : const AssetImage('assets/images/profile.png')
-                              as ImageProvider,
-                    ),
+                InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      backgroundColor: Colors.grey[300],
+                      context: context,
+                      isScrollControlled: true,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(20),
+                        ),
+                      ),
+                      builder: (context) => Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            ElevatedButton.icon(
+                              onPressed: () {
+                                checkCameraPermission();
+                                _browseImage(ImageSource.camera);
+                                Navigator.pop(context);
+                              },
+                              icon: const Icon(Icons.camera),
+                              label: const Text('Camera'),
+                            ),
+                            ElevatedButton.icon(
+                              onPressed: () {
+                                _browseImage(ImageSource.gallery);
+                                Navigator.pop(
+                                    context); // Pick image from gallery
+                              },
+                              icon: const Icon(Icons.image),
+                              label: const Text('Gallery'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 130,
+                        width: 130,
+                        child: CircleAvatar(
+                          radius: 50,
+                          backgroundImage: _img != null
+                              ? FileImage(_img!)
+                              : const AssetImage(
+                                  'assets/images/profile.jpg',
+                                ) as ImageProvider,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      const Text(
+                        'Upload Picture',
+                        style: TextStyle(fontSize: 16),
+                      )
+                    ],
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 const Text(
                   "Let's create your account",
                   style: TextStyle(
@@ -122,6 +154,12 @@ class _RegisterViewState extends State<RegisterView> {
                             borderRadius: BorderRadius.circular(12),
                           ),
                         ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your first name';
+                          }
+                          return null;
+                        },
                       ),
                     ),
                     const SizedBox(width: 10),
@@ -135,11 +173,18 @@ class _RegisterViewState extends State<RegisterView> {
                             borderRadius: BorderRadius.circular(12),
                           ),
                         ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your last name';
+                          }
+                          return null;
+                        },
                       ),
                     ),
                   ],
                 ),
                 const SizedBox(height: 20),
+                // Username field
                 TextFormField(
                   controller: _usernameController,
                   decoration: InputDecoration(
@@ -149,8 +194,15 @@ class _RegisterViewState extends State<RegisterView> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your username';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 20),
+                // Phone Number Field
                 TextFormField(
                   controller: _phoneController,
                   decoration: InputDecoration(
@@ -160,20 +212,71 @@ class _RegisterViewState extends State<RegisterView> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your phone number';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 20),
+                // Password Field
                 TextFormField(
                   controller: _passwordController,
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: "Password",
                     prefixIcon: const Icon(Icons.lock_outline),
+                    suffixIcon: const Icon(Icons.visibility_off_outlined),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your password';
+                    }
+                    if (value.length < 6) {
+                      return 'Password must be at least 6 characters long';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 20),
+                // Privacy Policy Agreement
+                Wrap(
+                  alignment: WrapAlignment.start,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 0.0),
+                      child: Checkbox(
+                        value: true,
+                        onChanged: (value) {},
+                        visualDensity: VisualDensity.compact,
+                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      ),
+                    ),
+                    const Text("I agree to "),
+                    GestureDetector(
+                      onTap: () {},
+                      child: const Text(
+                        "Privacy Policy",
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                    ),
+                    const Text(" and "),
+                    GestureDetector(
+                      onTap: () {},
+                      child: const Text(
+                        "Terms of Use",
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                // Create Account Button
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
