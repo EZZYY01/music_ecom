@@ -2,9 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:music_ecom/core/network/api_service.dart';
 import 'package:music_ecom/core/network/hive_service.dart';
-import 'package:music_ecom/features/auth/data/data_source/local_data_source/auth_local_data_source.dart';
 import 'package:music_ecom/features/auth/data/data_source/remote_data_source/auth_remote_data_source.dart';
-import 'package:music_ecom/features/auth/data/repository/auth_local_repository.dart';
 import 'package:music_ecom/features/auth/data/repository/auth_remote_repository.dart';
 import 'package:music_ecom/features/auth/domain/use_case/login_usecase.dart';
 import 'package:music_ecom/features/auth/domain/use_case/register_user_usecase.dart';
@@ -39,18 +37,18 @@ _initHiveService() {
 
 _initRegisterDependencies() {
   // init local data source
-  getIt.registerLazySingleton(
-    () => AuthLocalDataSource(getIt<HiveService>()),
-  );
+  // getIt.registerLazySingleton(
+  //   () => AuthLocalDataSource(getIt<HiveService>()),
+  // );
   //remote
   getIt.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSource(getIt<Dio>()),
   );
 
   // init local repository
-  getIt.registerLazySingleton(
-    () => AuthLocalRepository(getIt<AuthLocalDataSource>()),
-  );
+  // getIt.registerLazySingleton(
+  //   () => AuthLocalRepository(getIt<AuthLocalDataSource>()),
+  // );
   //remote
   getIt.registerLazySingleton<AuthRemoteRepository>(
     () => AuthRemoteRepository(getIt<AuthRemoteDataSource>()),
@@ -88,9 +86,15 @@ _initHomeDependencies() async {
 }
 
 _initLoginDependencies() async {
+  // getIt.registerLazySingleton<LoginUseCase>(
+  //   () => LoginUseCase(
+  //     getIt<AuthLocalRepository>(),
+  //   ),
+  // );
+
   getIt.registerLazySingleton<LoginUseCase>(
     () => LoginUseCase(
-      getIt<AuthLocalRepository>(),
+      getIt<AuthRemoteRepository>(),
     ),
   );
 
