@@ -28,7 +28,7 @@ class LoginUseCase implements UsecaseWithParams<String, LoginParams> {
   LoginUseCase(this.repository);
 
   @override
-  Future<Either<Failure, String>> call(LoginParams params) {
+  Future<Either<Failure, String>> call(LoginParams params) async {
     // IF api then store token in shared preferences
     return repository.logincustomer(params.username, params.password);
   }

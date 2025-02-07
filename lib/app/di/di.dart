@@ -93,9 +93,7 @@ _initLoginDependencies() async {
   // );
 
   getIt.registerLazySingleton<LoginUseCase>(
-    () => LoginUseCase(
-      getIt<AuthRemoteRepository>(),
-    ),
+    () => LoginUseCase(getIt<AuthRemoteRepository>()),
   );
 
   getIt.registerFactory<LoginBloc>(
