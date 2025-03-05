@@ -1,4 +1,4 @@
-name: music_ecom
+name: soundsage
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.5.4
+  sdk: ^3.5.3
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -36,6 +36,34 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
 
+
+  #local storage
+  shared_preferences: ^2.2.0
+  flutter_secure_storage: ^8.0.0
+
+  #state management
+  bloc: ^8.1.2
+  flutter_bloc: ^8.0.1
+  get_it: ^7.6.0
+
+  http: ^1.3.0
+  equatable: ^2.0.5
+  dartz: ^0.10.1
+  internet_connection_checker: ^1.0.0+1
+
+  #ui
+  oktoast: ^3.3.1
+  flutter_snake_navigationbar: ^0.6.1
+  shimmer: ^3.0.0
+  cached_network_image: ^3.3.1
+  carousel_slider: ^5.0.0
+  smooth_page_indicator: ^1.1.0
+  flutter_easyloading: ^3.0.5
+  sizer: ^3.0.5
+  image_picker: ^1.1.2
+  khalti_checkout_flutter: ^1.0.0-dev.8
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -45,7 +73,9 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
+  mocktail: ^0.3.0
+  bloc_test: ^9.1.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -58,37 +88,12 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  #To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/
-
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/to/resolution-aware-images
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/to/asset-from-package
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  fonts:
-    - family: Montserrat Bold
-      fonts:
-        - asset: assets/fonts/Montserrat-Bold.ttf
-
-    - family: Montserrat Italic
-      fonts:
-        - asset: assets/fonts/Montserrat-Italic.ttf
-    
-    - family: Montserrat Regular
-      fonts:
-        - asset: assets/fonts/Montserrat-Regular.ttf
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/to/font-from-package
+    - assets/navbar_icons/
+    - assets/status_image/
+    - assets/dev/
+    - assets/other_images/
+    - assets/icons/
+    - assets/images/coverphoto.jpg
+    - assets/images/coverimage2.jpg
+    - assets/images/coverimage3.jpg
