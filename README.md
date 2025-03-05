@@ -55,12 +55,12 @@ flutter run
 Screenshots
 Here are some screenshots from the app:
 
-![Image 1](appimage/address.png){: width="500px" height="300px"}
-![Image 1](appimage/cart1.png){: width="500px" height="300px"}
-![Image 1](appimage/cart2.png){: width="500px" height="300px"}
-![Image 1](appimage/category.png){: width="500px" height="300px"}
-![Image 1](appimage/emptyCart.png){: width="500px" height="300px"}
-![Image 1](appimage/homelogin.png){: width="500px" height="300px"}
-![Image 1](appimage/homepageNologin.png){: width="500px" height="300px"}
-![Image 1](appimage/signin.png){: width="500px" height="300px"}
-![Image 1](appimage/signup.png){: width="500px" height="300px"}
+<img src="appimage/address.png" width="500" height="300">
+<img src="appimage/cart1.png" width="500" height="300">
+<img src="appimage/cart2.png" width="500" height="300">
+<img src="appimage/category.png" width="500" height="300">
+<img src="appimage/emptyCart.png" width="500" height="300">
+<img src="appimage/homelogin.png" width="500" height="300">
+<img src="appimage/homepageNologin.png" width="500" height="300">
+<img src="appimage/signin.png" width="500" height="300">
+<img src="appimage/signup.png" width="500" height="300">
