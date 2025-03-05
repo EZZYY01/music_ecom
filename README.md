@@ -1,132 +1,66 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-<!-- PROJECT LOGO -->
-<p align="center">
-  <h3 align="center">Flutter TDD Clean Architecture E-Commerce App - SoundSage</h3>
-</p>
+# Music Instrument Ecommerce App
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+This is a Flutter-based eCommerce application for purchasing musical instruments. The app follows **Clean Architecture** principles and uses **Hive** for local data storage, with **Node.js** handling the remote data source.
 
+## Features
 
-Welcome to the Flutter-TDD-Clean-Architecture-E-Commerce-App GitHub repository! This project is a showcase of modern mobile app development practices, leveraging the power of Flutter, Test-Driven Development (TDD), Clean Architecture, and the BLoC (Business Logic Component) package. Built using the latest version of Flutter 3, this E-Commerce application exemplifies best practices for building scalable, maintainable, and efficient Flutter apps.
+- **Login & Signup:** Users can sign up for a new account and log in to their existing account.
+- **Browse Products:** Users can browse a variety of musical instruments.
+- **Add to Cart:** Add selected items to the shopping cart for later purchase.
+- **Checkout:** Complete the purchase with integrated payment options.
+- **Delivery Options:** Choose from different delivery methods for your purchased items.
 
-## Key Features:
+## Architecture
 
-* **Test-Driven Development (TDD)**: This project emphasizes the importance of writing tests before writing the actual code. It ensures that the application's logic is thoroughly tested, enhancing reliability and maintainability.
-* **Clean Architecture**: The app follows a clean and modular architecture that separates concerns into different layers: Presentation, Domain, and Data. This architecture promotes code reusability and makes it easier to adapt to changes in the future.
-* **BLoC State Management**: The app utilizes the BLoC pattern for state management. BLoC helps manage the flow of data and business logic in a clean and reactive manner, improving overall app performance.
-* **E-Commerce Functionality**: The app showcases a variety of E-Commerce features, such as product browsing, searching, cart and purchasing. Users can explore products, add them to their cart, and complete transactions seamlessly.
-<!-- Features -->
----
-| Feature       | UseCases                                                                                                                                                                                                   |
-|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Product       | Get Product UseCase                                                                                                                                                                                        |
-| Category      | Get Cached Category UseCase<br/>Get Remote Category UseCase<br/>Filter Category UseCase                                                                                                                    |
-| Cart          | Get Cached Cart UseCase<br/>Get Remote Cart UseCase<br/>Add Cart Item UseCase<br/>Sync Cart UseCase                                                                                                        |
-| User          | Get Cached User UseCase<br/>SignIn UseCase<br/>SignUp UseCase<br/>SignOut UseCase                                                                                                                          |
-| Delivery Info | Get Cached Delivery Info UseCase<br/>Get Remote Delivery Info UseCase<br/>Add Delivery Info UseCase<br/>Edit Delivery Info UseCase<br/>Select Delivery Info UseCase<br/>Get Selected Delivery Info UseCase |
-| Order         | Get Orders UseCase<br/>Add Order UseCase                                                                                                                                                                   |
+This app follows **Clean Architecture**, ensuring modularity, scalability, and maintainability. The architecture separates the business logic from UI, and provides clear layers for data management and presentation.
 
----
+## Tech Stack
 
-## Demo Sample
+- **Flutter** & **Dart** for cross-platform mobile development.
+- **Hive** for local data storage.
+- **Node.js** for the backend (remote data source/API).
 
-<div style="text-align: center">
-    <table>
-        <tr>
-            <td style="text-align: center">
-                <img src="https://res.cloudinary.com/dhyttttax/image/upload/v1695741758/RepoAssets/home-loading_r39lc6.gif" width="200"/>
-            </td>            
-            <td style="text-align: center">
-                <img src="https://res.cloudinary.com/dhyttttax/image/upload/v1695743869/RepoAssets/home-navigation-min_q1cou5.gif" width="200"/>
-            </td>
-            <td style="text-align: center">
-                <img src="https://res.cloudinary.com/dhyttttax/image/upload/v1695744798/RepoAssets/product-details-order_j0lvw5.gif" width="200" />
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align: center">
-                <img src="https://res.cloudinary.com/dhyttttax/image/upload/v1695745493/RepoAssets/user-delivery-infomarion_zr1eyv.gif" width="200"/>
-            </td>
-            <td style="text-align: center">
-                <img src="https://res.cloudinary.com/dhyttttax/image/upload/v1695746530/RepoAssets/user-auth-screens_k3h6fw.gif" width="200"/>
-            </td>
-            <td style="text-align: center">
-                <img src="https://res.cloudinary.com/dhyttttax/image/upload/v1695747060/RepoAssets/user-sign-in-loading_qjqmt0.gif" width="200"/>
-            </td>
-        </tr>
-    </table>
-</div>
+## Setup Instructions
 
-## Backend Options
-### Node json-server(Mock API)
-* Source Code - https://github.com/Sameera-Perera/E-Commerce-Mock-API
-* Live - https://e-commerce-mock-api-webservice.onrender.com
+### Prerequisites
 
-### Java Spring Boot
-* Source Code - coming soon
-* Live - coming soon
+Make sure you have the following installed:
 
-## Contributing:
+- Flutter SDK
+- Dart SDK
+- Node.js (for backend)
+- Hive package for local data storage
 
-We welcome contributions from the Flutter community to make this project even better. Whether you are interested in adding new features, fixing bugs, or improving documentation, your contributions are highly appreciated. Please refer to the contribution guidelines in the repository for more details on how to get involved.
+### Local Setup
 
-<!-- GETTING STARTED -->
-## Getting Started
+1. **Clone the Repository:**
+   ```bash
+   git clone 
+Flutter Setup: Navigate to the project directory and install dependencies:
 
-To get started with this project, follow the instructions in the README to set up your development environment and run the app locally. You can also explore the project's architecture, tests, and documentation to gain insights into building robust Flutter apps.
+bash
+Copy
+cd your_project_name
+flutter pub get
+Backend Setup (Node.js):
 
-We hope this Flutter-TDD-Clean-Architecture-E-Commerce-App serves as a valuable resource for both Flutter enthusiasts and developers looking to learn about TDD, clean architecture, and BLoC in the context of mobile app development. Happy coding!
+bash
+Copy
+npm start
+Running the App: Now, you can run the Flutter app on your preferred platform (Android or iOS):
 
-### Installation
+bash
+Copy
+flutter run
+Screenshots
+Here are some screenshots from the app:
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/Sameera-Perera/Flutter-TDD-Clean-Architecture-E-Commerce-App.git
-   ```
-2. Install packages
-   ```sh
-   flutter pub get
-   ```
-3. Run app
-   ```sh
-   flutter run lib/main.dart
-   ```
-4. Run test
-   ```sh
-   flutter test
-   ```
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-## Contributors ✨
-
-Thanks to these wonderful people:
-<!-- ALL-CONTRIBUTORS-LIST:START -->
-<table>
-  <tr><td align="center"><a href="https://github.com/AaronDsilva97"><img src="https://avatars.githubusercontent.com/u/74453685?v=4" width="100px;" alt="AaronDsilva97"/><br /><sub><b>AaronDsilva97</b></sub></a></td></tr>
-</table>
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/Sameera-Perera/Flutter-TDD-Clean-Architecture-E-Commerce-App.svg?style=for-the-badge
-[contributors-url]: https://github.com/Sameera-Perera/Flutter-TDD-Clean-Architecture-E-Commerce-App/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Sameera-Perera/Flutter-TDD-Clean-Architecture-E-Commerce-App.svg?style=for-the-badge
-[forks-url]: https://github.com/Sameera-Perera/Flutter-TDD-Clean-Architecture-E-Commerce-App/network/members
-[stars-shield]: https://img.shields.io/github/stars/Sameera-Perera/Flutter-TDD-Clean-Architecture-E-Commerce-App.svg?style=for-the-badge
-[stars-url]: https://github.com/Sameera-Perera/Flutter-TDD-Clean-Architecture-E-Commerce-App/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Sameera-Perera/Flutter-TDD-Clean-Architecture-E-Commerce-App.svg?style=for-the-badge
-[issues-url]: https://github.com/Sameera-Perera/Flutter-TDD-Clean-Architecture-E-Commerce-App/issues
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: http://www.linkedin.com/in/sameera-perera-1148081b8
-[product-screenshot]: readme_assets/splash.jpg
+<img src="appimage/address.png" width="500" height="300">
+<img src="appimage/cart1.png" width="500" height="300">
+<img src="appimage/cart2.png" width="500" height="300">
+<img src="appimage/category.png" width="500" height="300">
+<img src="appimage/emptyCart.png" width="500" height="300">
+<img src="appimage/homelogin.png" width="500" height="300">
+<img src="appimage/homepageNologin.png" width="500" height="300">
+<img src="appimage/signin.png" width="500" height="300">
+<img src="appimage/signup.png" width="500" height="300">
